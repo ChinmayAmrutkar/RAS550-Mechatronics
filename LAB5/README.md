@@ -42,7 +42,7 @@ The experiment was divided into three 500-second segments, with the PWM command 
 Each segment's response was modeled using a **first-order plus dead time (FOPDT)** model:
 $$y(t) = y_{\text{init}} + G \cdot \text{step}(t - t_0 - \theta_p) \cdot \left(1 - e^{-(t - (t_0 + \theta_p))/\tau}\right)$$
 where $t$ is the local time $t_l$, and $t_0$ is 10 seconds.
-The four parameters—$y_{\text{init}}$ (**Initial Temperature**), $G$ (**Steady-state Gain**), $\tau$ (**Time Constant**), and $\theta_p$ (**Dead Time**) — were estimated by minimizing the sum of squared differences between the measured data $y(t)$ and the model prediction using MATLAB's nonlinear least-squares optimization function `lsqcurvefit`.
+The four parameters — $y_{\text{init}}$ (**Initial Temperature**), $G$ (**Steady-state Gain**), $\tau$ (**Time Constant**), and $\theta_p$ (**Dead Time**) — were estimated by minimizing the sum of squared differences between the measured data $y(t)$ and the model prediction using MATLAB's nonlinear least-squares optimization function `lsqcurvefit`.
 
 **Estimated Parameters (y\_init, G, tau, theta\_p)**:
 
@@ -50,7 +50,7 @@ The four parameters—$y_{\text{init}}$ (**Initial Temperature**), $G$ (**Steady
 |:-------:|:--------------|:---------|:----------|:---------------|:-----------------|
 | **Seg1** (0 → 80%) | 24.974 | 57.304 | 160.91 | 21.27 | **Heating Phase** (Step 3) |
 | **Seg2** (80 → 40%) | 78.001 | -23.799 | 132.2 | 17.486 | **Partial Cooling** (Step 4) |
-| **Seg3** (40 → 0%) | 54.657 | -29.9 | 162.32 | 71.646 | **Natural Cooling** (Step 5) |
+| **Seg3** (40 → 0%) | **54.412** | **-29.623** | **161.64** | **23.25** | **Natural Cooling** (Step 5) |
 
 **Key Observations from Model Parameters:**
 
@@ -62,9 +62,12 @@ The four parameters—$y_{\text{init}}$ (**Initial Temperature**), $G$ (**Steady
 
 ### Expected Results and Deliverables
 
-* **Temperature vs. Time plots** for all step changes (Segments 1, 2, and 3).
-* **Comparison of PWM input signal and temperature output** on a single combined plot.
+* **Temperature vs. Time plots with PWM input signal** for all step changes (Segments 1, 2, and 3).
+<img width="1600" height="850" alt="image" src="https://github.com/user-attachments/assets/307de784-6989-4a98-8a81-5c75240a7025" />
+
 * **Overlay plots** for each segment showing the measured temperature data vs. the FOPDT modeled responses.
+<img width="856" height="616" alt="image" src="https://github.com/user-attachments/assets/7f249a7f-bf43-4e2d-8328-855a20e9a6c3" />
+
 * **System parameters** ($y_{\text{init}}$, $G$, $\tau$, $\theta_p$) determined and tabulated for each step.
 
 | Plot No. | Step Description | Input PWM Range (%) | Purpose |
